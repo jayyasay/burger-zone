@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Menu Slide Placeholder Two</title>
+  <desc id="desc">Second placeholder slideshow image for Burger Zone menu modal.</desc>
+  <rect width="1600" height="1000" fill="#17130d"/>
+  <rect x="90" y="90" width="1420" height="820" rx="52" fill="#98c83f"/>
+  <circle cx="310" cy="250" r="180" fill="#f8b344"/>
+  <rect x="880" y="170" width="450" height="450" rx="54" transform="rotate(8 1105 395)" fill="rgba(255,247,231,0.15)"/>
+  <text x="180" y="210" fill="#1d1a15" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">MENU IMAGE 02</text>
+  <text x="180" y="300" fill="#fff7e7" font-family="Arial, Helvetica, sans-serif" font-size="100" font-weight="700">Close-Up Detail</text>
+  <text x="180" y="392" fill="#fff7e7" font-family="Arial, Helvetica, sans-serif" font-size="36" opacity=".9">Use for cheese pull, burger texture, sauce detail, or packaging.</text>
+  <rect x="170" y="540" width="720" height="190" rx="32" fill="rgba(23,19,13,0.2)"/>
+  <text x="220" y="645" fill="#1d1a15" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Secondary supporting image slot</text>
+</svg>

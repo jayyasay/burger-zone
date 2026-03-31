@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Menu Slide Placeholder Three</title>
+  <desc id="desc">Third placeholder slideshow image for Burger Zone menu modal.</desc>
+  <rect width="1600" height="1000" fill="#17130d"/>
+  <rect x="85" y="85" width="1430" height="830" rx="58" fill="#231b10"/>
+  <rect x="125" y="125" width="760" height="750" rx="48" fill="#f8b344"/>
+  <rect x="925" y="125" width="550" height="750" rx="48" fill="#98c83f"/>
+  <text x="190" y="230" fill="#fff7e7" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">MENU IMAGE 03</text>
+  <text x="190" y="320" fill="#1d1a15" font-family="Arial, Helvetica, sans-serif" font-size="98" font-weight="700">Lifestyle Table Scene</text>
+  <text x="190" y="410" fill="#1d1a15" font-family="Arial, Helvetica, sans-serif" font-size="36" opacity=".82">Ideal for combo meals, multiple drinks, or a customer hand reaching in.</text>
+  <text x="980" y="560" fill="#fff7e7" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">Replace with a wider story-driven photo</text>
+</svg>
