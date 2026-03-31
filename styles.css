@@ -1012,6 +1012,7 @@ select {
   width: min(100%, 48rem);
   max-height: min(88vh, 48rem);
   overflow: auto;
+  overscroll-behavior: contain;
   padding: 1.5rem;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1362,16 +1363,17 @@ select {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+  opacity: 1;
+  transform: none;
 }
 
-.reveal.is-visible {
+.hero.reveal {
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.hero.reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 @media (max-width: 1080px) {
@@ -1521,15 +1523,14 @@ select {
     scroll-behavior: auto;
   }
 
-  .reveal,
+  .hero.reveal,
   .site-nav,
   .button,
   .site-nav a {
     transition: none;
   }
 
-  .reveal {
+  .hero.reveal {
     opacity: 1;
-    transform: none;
   }
 }

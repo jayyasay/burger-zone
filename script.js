@@ -19,6 +19,7 @@ const modalSlideIndicator = document.querySelector("#menu-modal-slide-indicator"
 const modalSlideCaption = document.querySelector("#menu-modal-slide-caption");
 const modalPrevButton = document.querySelector("#menu-slider-prev");
 const modalNextButton = document.querySelector("#menu-slider-next");
+const modalDialog = document.querySelector(".menu-modal-dialog");
 
 const defaultMenuSlides = [
   {
@@ -275,6 +276,9 @@ const openMenuModal = (itemId, trigger) => {
   renderActiveSlide();
   menuModal.hidden = false;
   document.body.classList.add("modal-open");
+  if (modalDialog) {
+    modalDialog.scrollTop = 0;
+  }
   document.querySelector(".menu-modal-close")?.focus();
 };
 
