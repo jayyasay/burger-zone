@@ -17,9 +17,32 @@ const ensureOrdersDir = () => {
   fs.mkdirSync(path.dirname(ordersFile), { recursive: true });
 };
 
+const coerceErrorMessage = (error, fallback) => {
+  if (!error) {
+    return fallback;
+  }
+  if (typeof error === "string") {
+    return error;
+  }
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+  if (typeof error === "object" && error.message) {
+    return String(error.message);
+  }
+  return fallback;
+};
+
+const createStripeClient = (secretKey) =>
+  new Stripe(secretKey, {
+    // Prevent long hangs in production if the upstream is slow/unreachable.
+    timeout: Number(process.env.STRIPE_TIMEOUT_MS || 20000),
+    maxNetworkRetries: Number(process.env.STRIPE_MAX_RETRIES || 2)
+  });
+
 const getStripeClient = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
-  return secretKey ? new Stripe(secretKey) : null;
+  return secretKey ? createStripeClient(secretKey) : null;
 };
 
 const readOrders = () => {
@@ -181,25 +204,32 @@ const sendOrderEmails = async (order) => {
     </div>
   `;
 
-  await transporter.sendMail({
-    from: fromEmail,
-    to: restaurantEmail,
-    subject,
-    text: `A new paid order has been received.\n\nReference: ${order.reference}\nCustomer: ${order.customer_name}\nEmail: ${order.customer_email}\nPhone: ${order.customer_phone}\nAddress: ${order.address_line1}, ${order.city} ${order.postal_code}\nNotes: ${order.order_notes || "None"}\n\nItems:\n${orderLines}\n\nTotal: ${formatMoney(order.amount_total)}`,
-    html: restaurantHtml
-  });
-
-  if (order.customer_email) {
+  try {
     await transporter.sendMail({
       from: fromEmail,
-      to: order.customer_email,
-      subject: `RC Burger Zone Order Received ${order.reference}`,
-      text: `Thank you for your order from RC Burger Zone.\n\nReference: ${order.reference}\n\nItems:\n${orderLines}\n\nTotal: ${formatMoney(order.amount_total)}\n\nWe have received your payment and forwarded your order to the restaurant.`,
-      html: customerHtml
+      to: restaurantEmail,
+      subject,
+      text: `A new paid order has been received.\n\nReference: ${order.reference}\nCustomer: ${order.customer_name}\nEmail: ${order.customer_email}\nPhone: ${order.customer_phone}\nAddress: ${order.address_line1}, ${order.city} ${order.postal_code}\nNotes: ${order.order_notes || "None"}\n\nItems:\n${orderLines}\n\nTotal: ${formatMoney(order.amount_total)}`,
+      html: restaurantHtml
     });
-  }
 
-  return { status: "sent" };
+    if (order.customer_email) {
+      await transporter.sendMail({
+        from: fromEmail,
+        to: order.customer_email,
+        subject: `RC Burger Zone Order Received ${order.reference}`,
+        text: `Thank you for your order from RC Burger Zone.\n\nReference: ${order.reference}\n\nItems:\n${orderLines}\n\nTotal: ${formatMoney(order.amount_total)}\n\nWe have received your payment and forwarded your order to the restaurant.`,
+        html: customerHtml
+      });
+    }
+
+    return { status: "sent" };
+  } catch (error) {
+    return {
+      status: "error",
+      message: coerceErrorMessage(error, "Email sending failed.")
+    };
+  }
 };
 
 const fulfillStripeSession = async (sessionId) => {
@@ -208,9 +238,25 @@ const fulfillStripeSession = async (sessionId) => {
     throw new Error("Missing STRIPE_SECRET_KEY.");
   }
 
-  const session = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ["line_items", "customer_details"]
-  });
+  let session;
+  try {
+    session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["line_items", "customer_details"]
+    });
+  } catch (error) {
+    // Helpful hint: this commonly happens when the session is `cs_test_...` but you set a live key, or vice versa.
+    const message = coerceErrorMessage(
+      error,
+      "Could not retrieve the Stripe Checkout session."
+    );
+    const statusCode =
+      error && typeof error === "object" && Number.isFinite(error.statusCode)
+        ? error.statusCode
+        : 500;
+    const enriched = new Error(message);
+    enriched.statusCode = statusCode;
+    throw enriched;
+  }
 
   const paidStatuses = new Set(["paid", "no_payment_required"]);
   if (!paidStatuses.has(session.payment_status)) {
@@ -269,7 +315,17 @@ const fulfillStripeSession = async (sessionId) => {
   }
 
   orders[session.id] = order;
-  writeOrders(orders);
+  try {
+    writeOrders(orders);
+    order.storage_status = "saved";
+  } catch (error) {
+    order.storage_status = "error";
+    order.storage_message = coerceErrorMessage(
+      error,
+      "Could not persist orders.json on this host."
+    );
+    console.error("Failed to write orders file:", order.storage_message);
+  }
 
   return { status: "fulfilled", order, session };
 };
@@ -311,6 +367,13 @@ app.post(
 );
 
 app.use(express.json());
+app.get("/", (_req, res) => {
+  res.sendFile(path.join(publicDir, "index.html"));
+});
+
+app.get("/index.html", (_req, res) => {
+  res.sendFile(path.join(publicDir, "index.html"));
+});
 app.use(express.static(publicDir));
 
 app.get("/api/checkout-config", (_req, res) => {
@@ -350,8 +413,15 @@ app.get("/api/order-status", async (req, res) => {
       error: "Order exists but payment is not marked as paid yet."
     });
   } catch (error) {
-    res.status(500).json({
-      error: error.message || "Could not load Stripe order status."
+    const statusCode =
+      error && typeof error === "object" && Number.isFinite(error.statusCode)
+        ? error.statusCode
+        : 500;
+    console.error("Order status failed:", coerceErrorMessage(error, "Unknown error"));
+    res.status(statusCode).json({
+      error:
+        coerceErrorMessage(error, "Could not load Stripe order status.") +
+        " (Tip: check if your Stripe keys match the session mode: cs_test vs cs_live.)"
     });
   }
 });
@@ -380,7 +450,11 @@ app.post("/api/create-stripe-checkout-session", async (req, res) => {
   }
 
   const origin = req.headers.origin || `http://localhost:${port}`;
-  const stripe = new Stripe(secretKey);
+  const stripe = getStripeClient();
+  if (!stripe) {
+    res.status(500).json({ error: "Stripe is not configured." });
+    return;
+  }
 
   try {
     const session = await stripe.checkout.sessions.create({
