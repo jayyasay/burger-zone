@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RC Burger Zone</title>
+    <meta name="theme-color" content="#f6f2e8" />
+    <meta
+      name="description"
+      content="RC Burger Zone serves bold, craveable burgers, loaded sides, and easy combo meals for fast neighborhood ordering."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="brutalist-page">
+    <a class="skip-link brutalist-skip-link" href="#main-content">Skip to Content</a>
+    <div class="page-shell brutalist-shell">
+      <header class="site-header brutalist-header">
+        <a class="brand brutalist-brand" href="index.html" aria-label="RC Burger Zone home">
+          <img
+            class="brand-logo brutalist-brand-logo"
+            src="logo.jpg"
+            alt="RC Burger Zone logo"
+            width="960"
+            height="960"
+            fetchpriority="high"
+          />
+          <span class="brand-copy brutalist-brand-copy">
+            <strong>RC Burger Zone</strong>
+            <em>Kroner Street, Muntinlupa City 1773</em>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle brutalist-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav brutalist-nav" id="site-nav">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="menu.html">Shop Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="section brutalist-hero reveal">
+          <div class="brutalist-hero-copy">
+            <p class="brutalist-kicker">Neighborhood Burgers. Big Cravings. Fast Checkout.</p>
+            <h1>HOT OFF THE GRIDDLE. READY WHEN YOU ARE.</h1>
+            <p class="brutalist-lead">
+              RC Burger Zone makes it easy to go from craving to checkout with juicy burgers, loaded
+              fries, barkada-ready bundles, and cold drinks that hit the spot. Skip the guesswork,
+              head straight to the menu, and build your order in a few taps.
+            </p>
+
+            <div class="brutalist-cta-row">
+              <a class="button brutalist-button-primary" href="menu.html">Order From The Menu</a>
+              <a class="button brutalist-button-secondary" href="cart.html">
+                View Cart
+                <span class="cart-badge brutalist-cart-badge" data-cart-count hidden>0</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="brutalist-hero-board">
+            <div class="brutalist-board-top">
+              <span>RC Burger Zone</span>
+              <span>Brutalist Storefront</span>
+            </div>
+            <div class="brutalist-board-grid">
+              <article>
+                <strong>SIGNATURE BURGERS</strong>
+                <p>Classic stacks, double cheese builds, and easy combos made for everyday cravings.</p>
+              </article>
+              <article>
+                <strong>LOADED SIDES</strong>
+                <p>Cheese fries and dips built to turn a quick burger run into a full meal.</p>
+              </article>
+              <article>
+                <strong>GROUP ORDERS</strong>
+                <p>Barkada trays make movie nights, merienda breaks, and office snack runs easier.</p>
+              </article>
+              <article>
+                <strong>COLD DRINKS</strong>
+                <p>Iced tea and lemon cooler keep every rich, cheesy bite balanced and refreshing.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section brutalist-strip">
+          <div class="brutalist-marquee" aria-label="Store highlights">
+            <span>OPEN DAILY 10 AM - 9 PM</span>
+            <span>BURGERS FROM ₱89</span>
+            <span>COMBOS FOR SOLO OR BARKADA</span>
+            <span>FAST ONLINE ORDERING</span>
+          </div>
+        </section>
+
+        <section class="section brutalist-summary">
+          <div class="brutalist-summary-card">
+            <p class="brutalist-label">Why people come back</p>
+            <h2>Simple menu. Bold flavor. No slow decision-making.</h2>
+            <p>
+              When hunger hits, you want the good stuff fast. RC Burger Zone keeps the experience
+              clear and direct so you can spot your go-to burger, add the right side, and check out
+              without digging through clutter.
+            </p>
+          </div>
+          <div class="brutalist-summary-grid">
+            <div class="brutalist-mini-card">
+              <strong>MADE FOR CRAVINGS</strong>
+              <p>Every burger is built for that first messy, satisfying bite.</p>
+            </div>
+            <div class="brutalist-mini-card">
+              <strong>EASY TO ORDER</strong>
+              <p>Pick your meal, review your cart, and move straight to checkout.</p>
+            </div>
+            <div class="brutalist-mini-card">
+              <strong>SHAREABLE PICKS</strong>
+              <p>From solo combos to Barkada Box trays, there is a setup for every appetite.</p>
+            </div>
+            <div class="brutalist-mini-card">
+              <strong>ALWAYS A GOOD MATCH</strong>
+              <p>Loaded fries, cheese dips, and cold drinks round out the order without overthinking it.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer brutalist-footer">
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.jpg" alt="RC Burger Zone logo" width="960" height="960" loading="lazy" />
+          <p>RC Burger Zone</p>
+        </div>
+        <p>Burgers, sides, and combos ready for your next quick craving run.</p>
+      </footer>
+    </div>
+
+    <script src="cart-store.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

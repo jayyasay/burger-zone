@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | RC Burger Zone</title>
+    <meta name="theme-color" content="#f6f2e8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="brutalist-page brutalist-catalog-page">
+    <a class="skip-link brutalist-skip-link" href="#main-content">Skip to Content</a>
+    <div class="page-shell brutalist-shell">
+
+      <header class="site-header brutalist-header">
+        <a class="brand brutalist-brand" href="index.html" aria-label="RC Burger Zone home">
+          <img
+            class="brand-logo brutalist-brand-logo"
+            src="logo.jpg"
+            alt="RC Burger Zone logo"
+            width="960"
+            height="960"
+          />
+          <span class="brand-copy brutalist-brand-copy">
+            <strong>RC Burger Zone</strong>
+            <em>Cart review / ready for checkout</em>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle brutalist-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav brutalist-nav" id="site-nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Shop Menu</a>
+          <a href="cart.html" aria-current="page">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="section inner-hero">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Your order</p>
+              <h1 class="page-title">Cart Review</h1>
+            </div>
+            <p>Adjust the basket here before moving into the clean Stripe checkout flow.</p>
+          </div>
+        </section>
+
+        <section class="section cart-layout">
+          <div class="cart-main">
+            <div class="empty-panel" data-cart-empty hidden>
+              <h2>Your cart is empty.</h2>
+              <p>Head back to the menu and add a few Burger Zone favorites first.</p>
+              <a class="button brutalist-button-primary" href="menu.html">Browse Menu</a>
+            </div>
+
+            <div data-cart-filled>
+              <div class="cart-list" data-cart-root></div>
+            </div>
+          </div>
+
+          <aside class="cart-sidebar">
+            <div class="checkout-card">
+              <span class="panel-label">Order summary</span>
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <strong data-cart-subtotal>₱0.00</strong>
+              </div>
+              <p class="summary-note">This page stays intentionally plain so the user can focus on quantities, totals, and the next action.</p>
+              <a class="button brutalist-button-primary full" data-cart-checkout href="#">Proceed to Checkout</a>
+              <button class="button brutalist-button-secondary full" type="button" data-clear-cart>Clear Cart</button>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer brutalist-footer">
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.jpg" alt="RC Burger Zone logo" width="960" height="960" loading="lazy" />
+          <p>RC Burger Zone</p>
+        </div>
+        <p>Review your order before moving to checkout.</p>
+      </footer>
+    </div>
+
+    <script src="app-data.js"></script>
+    <script src="cart-store.js"></script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+  </body>
+</html>

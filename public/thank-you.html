@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You | RC Burger Zone</title>
+    <meta name="theme-color" content="#f6f2e8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="brutalist-page brutalist-catalog-page">
+    <a class="skip-link brutalist-skip-link" href="#main-content">Skip to Content</a>
+    <div class="page-shell brutalist-shell">
+
+      <header class="site-header brutalist-header">
+        <a class="brand brutalist-brand" href="index.html" aria-label="RC Burger Zone home">
+          <img
+            class="brand-logo brutalist-brand-logo"
+            src="logo.jpg"
+            alt="RC Burger Zone logo"
+            width="960"
+            height="960"
+          />
+          <span class="brand-copy brutalist-brand-copy">
+            <strong>RC Burger Zone</strong>
+            <em>Order confirmation</em>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle brutalist-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav brutalist-nav" id="site-nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Shop Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="section inner-hero">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Order received</p>
+              <h1 class="page-title">Thank You</h1>
+            </div>
+            <p>Your payment was received. We’re preparing your order details and sending confirmation emails.</p>
+          </div>
+        </section>
+
+        <section class="section checkout-layout">
+          <div class="checkout-form-card thank-you-card">
+            <span class="panel-label">Payment status</span>
+            <p class="checkout-status" data-thank-you-status data-tone="info">Loading your order details...</p>
+            <div class="thank-you-copy">
+              <h2>What happens next</h2>
+              <p>The restaurant should receive an order email, and the customer email will contain the order summary and reference details.</p>
+            </div>
+            <div class="checkout-actions">
+              <a class="button brutalist-button-primary" href="menu.html">Order Again</a>
+              <a class="button brutalist-button-secondary" href="cart.html">Back to Cart</a>
+            </div>
+          </div>
+
+          <aside class="checkout-sidebar">
+            <div class="checkout-card">
+              <span class="panel-label">Confirmed order</span>
+              <div class="checkout-summary" data-thank-you-summary></div>
+              <div class="summary-row">
+                <span>Total</span>
+                <strong data-thank-you-total>₱0.00</strong>
+              </div>
+            </div>
+
+            <div class="checkout-card">
+              <span class="panel-label">Reference</span>
+              <div class="reference-grid">
+                <div class="reference-row">
+                  <span>Order ID</span>
+                  <strong data-order-reference>Pending</strong>
+                </div>
+                <div class="reference-row">
+                  <span>Email status</span>
+                  <strong data-email-status>Pending</strong>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer brutalist-footer">
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.jpg" alt="RC Burger Zone logo" width="960" height="960" loading="lazy" />
+          <p>RC Burger Zone</p>
+        </div>
+        <p>Thank you for ordering with RC Burger Zone.</p>
+      </footer>
+    </div>
+
+    <script src="app-data.js"></script>
+    <script src="cart-store.js"></script>
+    <script src="script.js"></script>
+    <script src="thank-you.js"></script>
+  </body>
+</html>

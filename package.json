@@ -1,0 +1,20 @@
+{
+  "name": "burger-zone",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RC Burger Zone site with cart, checkout, and Checkout.com GCash-ready integration.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@checkout.com/checkout-web-components": "^1.7.1",
+    "dotenv": "^17.3.1",
+    "express": "^5.1.0",
+    "nodemailer": "^6.10.1",
+    "stripe": "^18.4.0"
+  }
+}

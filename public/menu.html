@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu | RC Burger Zone</title>
+    <meta name="theme-color" content="#f6f2e8" />
+    <meta
+      name="description"
+      content="Browse burgers, loaded fries, drinks, and combo meals from RC Burger Zone and build your order in a few quick taps."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="brutalist-page brutalist-catalog-page">
+    <a class="skip-link brutalist-skip-link" href="#main-content">Skip to Content</a>
+    <div class="page-shell brutalist-shell">
+      <header class="site-header brutalist-header">
+        <a class="brand brutalist-brand" href="index.html" aria-label="RC Burger Zone home">
+          <img
+            class="brand-logo brutalist-brand-logo"
+            src="logo.jpg"
+            alt="RC Burger Zone logo"
+            width="960"
+            height="960"
+            fetchpriority="high"
+          />
+          <span class="brand-copy brutalist-brand-copy">
+            <strong>RC Burger Zone</strong>
+            <em>Fresh Burgers, Sides, and Combos</em>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle brutalist-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav brutalist-nav" id="site-nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html" aria-current="page">Shop Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="section brutalist-storefront">
+          <div class="brutalist-storefront-copy">
+            <p class="brutalist-kicker">RC Burger Zone / Order Online</p>
+            <h1>PICK YOUR BURGER. BUILD YOUR MEAL. CHECK OUT FAST.</h1>
+            <p class="brutalist-lead">
+              From signature burgers to barkada bundles, everything here is built for quick cravings
+              and easy ordering. Tap any item to see the details, then load up your cart when you are ready.
+            </p>
+          </div>
+          <aside class="brutalist-storefront-panel">
+            <span class="brutalist-panel-label">Live order panel</span>
+            <div class="brutalist-storefront-stats">
+              <div>
+                <span>Cart</span>
+                <strong data-cart-count>0</strong>
+              </div>
+              <div>
+                <span>Open</span>
+                <strong>10 AM - 9 PM</strong>
+              </div>
+              <div>
+                <span>From</span>
+                <strong>₱89</strong>
+              </div>
+            </div>
+            <div class="menu-actions brutalist-menu-actions">
+              <a class="button brutalist-button-primary" href="cart.html">Review Cart</a>
+              <a class="button brutalist-button-secondary" href="checkout.html">Go To Checkout</a>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section brutalist-menu-section" id="menu">
+          <div class="brutalist-section-head">
+            <p class="brutalist-label">Menu favorites</p>
+            <h2>MENU</h2>
+            <p class="menu-helper">Tap any card to see what is inside, check the nutrition facts, and add it straight to your cart.</p>
+          </div>
+
+          <div class="brutalist-menu-grid">
+            <button class="menu-card menu-trigger brutalist-menu-card featured" type="button" data-item="zone-classic-stack" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Zone Classic Stack burger" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Best Seller</span>
+              <h3>Zone Classic Stack</h3>
+              <p class="menu-price">₱89</p>
+              <p>A juicy classic with melty cheese, crisp lettuce, and house sauce that keeps regulars coming back.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="double-cheese-zone" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Double Cheese Zone burger" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Burger</span>
+              <h3>Double Cheese Zone</h3>
+              <p class="menu-price">₱149</p>
+              <p>Two beef patties, extra cheese, and a richer bite for days when one layer is not enough.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="loaded-cheese-fries" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Loaded Cheese Fries" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Loaded Side</span>
+              <h3>Loaded Cheese Fries</h3>
+              <p class="menu-price">₱79</p>
+              <p>Crispy fries covered in creamy cheese and savory toppings that disappear fast at the table.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="barkada-box" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Barkada Box meal tray" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Group Order</span>
+              <h3>Barkada Box</h3>
+              <p class="menu-price">₱349</p>
+              <p>A crowd-pleasing tray for movie nights, merienda runs, and easy group orders with zero hassle.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="extra-cheese-dip" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Extra Cheese Dip" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Add-on</span>
+              <h3>Extra Cheese Dip</h3>
+              <p class="menu-price">₱25</p>
+              <p>That extra creamy side dip for fries, burgers, and anyone who believes more cheese is always a good idea.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="iced-tea" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Glass of iced tea" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Drink</span>
+              <h3>Iced Tea</h3>
+              <p class="menu-price">₱39</p>
+              <p>Cold, sweet, and easy to pair with rich burgers, cheesy fries, and combo meals.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="lemon-cooler" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Glass of lemon cooler" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Drink</span>
+              <h3>Lemon Cooler</h3>
+              <p class="menu-price">₱49</p>
+              <p>A bright citrus refresher with a clean finish that keeps every meal tasting balanced.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+
+            <button class="menu-card menu-trigger brutalist-menu-card" type="button" data-item="classic-fries-drink-combo" aria-haspopup="dialog">
+              <span class="menu-card-media brutalist-menu-media">
+                <img src="assets/placeholders/menu-card-placeholder.svg" alt="Classic burger combo meal" width="1600" height="1000" loading="lazy" />
+              </span>
+              <span class="card-tag brutalist-tag">Combo</span>
+              <h3>Classic + Fries + Drink</h3>
+              <p class="menu-price">₱159</p>
+              <p>The easy win: one classic burger, fries, and a drink in one straightforward meal.</p>
+              <span class="menu-card-hint">View Item Details</span>
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <div class="menu-modal brutalist-modal" id="menu-modal" hidden>
+        <div class="menu-modal-backdrop brutalist-modal-backdrop" data-close-modal></div>
+        <div
+          class="menu-modal-dialog brutalist-modal-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="menu-modal-title"
+          aria-describedby="menu-modal-description"
+        >
+          <button class="menu-modal-close brutalist-close" type="button" aria-label="Close menu details" data-close-modal>
+            Close
+          </button>
+
+          <div class="menu-modal-header">
+            <p class="menu-modal-kicker" id="menu-modal-category">Menu Item</p>
+            <h3 id="menu-modal-title">Zone Classic Stack</h3>
+            <p class="menu-modal-price" id="menu-modal-price">₱89</p>
+            <p class="menu-modal-description" id="menu-modal-description">
+              A signature Burger Zone favorite with a juicy patty, melty cheese, crisp greens, and a balanced house sauce.
+            </p>
+          </div>
+
+          <section class="menu-modal-media">
+            <div class="menu-modal-slider-frame brutalist-slider-frame">
+              <button class="menu-slider-button prev" type="button" id="menu-slider-prev" aria-label="Previous image">Prev</button>
+              <img id="menu-modal-image" src="assets/placeholders/menu-slide-1.svg" alt="Menu item gallery image" width="1600" height="1000" />
+              <button class="menu-slider-button next" type="button" id="menu-slider-next" aria-label="Next image">Next</button>
+            </div>
+            <div class="menu-modal-slider-meta">
+              <strong id="menu-modal-slide-indicator">01 / 03</strong>
+              <p id="menu-modal-slide-caption">A closer look at one of RC Burger Zone's crowd favorites.</p>
+            </div>
+          </section>
+
+          <div class="menu-modal-content">
+            <section class="menu-modal-panel brutalist-panel">
+              <h4>Ingredients</h4>
+              <ul id="menu-modal-ingredients"></ul>
+            </section>
+            <section class="menu-modal-panel nutrition-panel brutalist-panel">
+              <h4>Nutrition Facts</h4>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <span class="nutrition-label">Calories</span>
+                  <strong id="menu-modal-calories">430 kcal</strong>
+                </div>
+                <div class="nutrition-item">
+                  <span class="nutrition-label">Protein</span>
+                  <strong id="menu-modal-protein">22 g</strong>
+                </div>
+                <div class="nutrition-item">
+                  <span class="nutrition-label">Carbs</span>
+                  <strong id="menu-modal-carbs">34 g</strong>
+                </div>
+                <div class="nutrition-item">
+                  <span class="nutrition-label">Fat</span>
+                  <strong id="menu-modal-fat">21 g</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="menu-modal-footer">
+            <button class="button brutalist-button-primary" id="menu-modal-add-to-cart" type="button">Add to Cart</button>
+            <a class="button brutalist-button-secondary" href="cart.html">Review Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <footer class="site-footer brutalist-footer">
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.jpg" alt="RC Burger Zone logo" width="960" height="960" loading="lazy" />
+          <p>RC Burger Zone</p>
+        </div>
+        <p>Pick your favorites, build your meal, and head to checkout when you are ready.</p>
+      </footer>
+    </div>
+
+    <script src="app-data.js"></script>
+    <script src="cart-store.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -553,7 +553,7 @@ select {
 
 .action-buttons {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.85rem;
   margin-top: 1rem;
 }
@@ -915,6 +915,13 @@ select {
   font-size: 0.95rem;
 }
 
+.menu-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
 .menu-price {
   margin: 0 0 0.85rem;
   font-family: "Lilita One", cursive;
@@ -1163,6 +1170,13 @@ select {
   margin-top: 1.5rem;
 }
 
+.menu-modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+}
+
 .menu-modal-panel {
   padding: 1.2rem;
   border-radius: 1.4rem;
@@ -1340,6 +1354,311 @@ select {
   font-size: 0.9rem;
 }
 
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--charcoal);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.inner-hero {
+  padding-bottom: 1rem;
+}
+
+.page-title {
+  margin: 0;
+  font-family: "Lilita One", cursive;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.cart-layout,
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.cart-main,
+.cart-sidebar,
+.checkout-sidebar {
+  display: grid;
+  gap: 1rem;
+}
+
+.empty-panel,
+.checkout-card,
+.checkout-form-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.empty-panel h2,
+.checkout-card h2 {
+  margin-top: 0;
+}
+
+.cart-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 13rem 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.cart-item-media {
+  overflow: hidden;
+  border-radius: 1.2rem;
+}
+
+.cart-item-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 10rem;
+  object-fit: cover;
+}
+
+.cart-item-copy h3,
+.checkout-line strong {
+  margin: 0.6rem 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.cart-item-copy p,
+.checkout-line p,
+.summary-note,
+.checkout-empty {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.cart-item-actions {
+  display: grid;
+  justify-items: end;
+  gap: 0.75rem;
+}
+
+.cart-item-price {
+  margin: 0;
+  font-family: "Lilita One", cursive;
+  font-size: 1.25rem;
+  color: var(--orange);
+}
+
+.quantity-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.quantity-picker button,
+.link-button {
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.quantity-picker button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.link-button {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.summary-row,
+.checkout-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.summary-row {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row strong {
+  font-family: "Lilita One", cursive;
+  font-size: 1.3rem;
+  color: var(--orange);
+}
+
+.checkout-summary {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.checkout-form-card {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-grid label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.field-span-2 {
+  grid-column: 1 / -1;
+}
+
+.form-grid input,
+.form-grid textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+}
+
+.form-grid input:focus-visible,
+.form-grid textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(152, 200, 63, 0.3);
+}
+
+.checkout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.checkout-status {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  line-height: 1.6;
+}
+
+.checkout-status[data-tone="success"] {
+  background: rgba(152, 200, 63, 0.16);
+  color: var(--white);
+}
+
+.checkout-status[data-tone="error"] {
+  background: rgba(221, 123, 22, 0.18);
+  color: var(--white);
+}
+
+.checkout-status[data-tone="info"] {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+
+.flow-shell {
+  min-height: 20rem;
+}
+
+.payment-method-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.payment-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.thank-you-copy h2 {
+  margin: 0 0 0.6rem;
+}
+
+.thank-you-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.reference-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.reference-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  padding: 0.85rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.reference-row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.reference-row strong {
+  font-family: "Lilita One", cursive;
+  font-size: 1rem;
+  color: var(--orange);
+}
+
+.is-disabled {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -1392,7 +1711,9 @@ select {
 
   .hero-poster-grid,
   .action-buttons,
-  .hero-quick-grid {
+  .hero-quick-grid,
+  .cart-layout,
+  .checkout-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1499,12 +1820,18 @@ select {
   .menu-modal-slider-meta,
   .menu-modal-content,
   .story-gallery,
-  .nutrition-grid {
+  .nutrition-grid,
+  .form-grid,
+  .cart-item {
     grid-template-columns: 1fr;
   }
 
   .menu-modal-slider-meta {
     display: grid;
+  }
+
+  .cart-item-actions {
+    justify-items: start;
   }
 
   .offer-ribbon {
@@ -1532,5 +1859,550 @@ select {
 
   .hero.reveal {
     opacity: 1;
+  }
+}
+
+body.brutalist-page {
+  color-scheme: light;
+  background: #f6f2e8;
+  color: #111111;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+body.brutalist-catalog-page {
+  background: #ffffff;
+}
+
+.brutalist-page .page-shell {
+  overflow: visible;
+}
+
+.brutalist-page .ambient,
+.brutalist-page .grain {
+  display: none;
+}
+
+.brutalist-skip-link {
+  background: #111111;
+  color: #f6f2e8;
+  border-radius: 0;
+}
+
+.brutalist-header,
+.brutalist-footer,
+.brutalist-page .section,
+.brutalist-page .site-header,
+.brutalist-page .site-footer {
+  width: min(calc(100% - 2rem), 1320px);
+}
+
+.brutalist-header {
+  padding-top: 1rem;
+}
+
+.brutalist-brand {
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.brutalist-brand-logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 0;
+  border: 3px solid #111111;
+  filter: none;
+}
+
+.brutalist-brand-copy strong,
+.brutalist-page .page-title,
+.brutalist-page .section-heading h2,
+.brutalist-page .hero h1,
+.brutalist-page .menu-card h3,
+.brutalist-page .menu-modal-header h3 {
+  font-family: "Archivo Black", sans-serif;
+  color: #111111;
+  letter-spacing: -0.03em;
+}
+
+.brutalist-brand-copy em,
+.brutalist-page p,
+.brutalist-page .summary-note,
+.brutalist-page .menu-helper,
+.brutalist-page .menu-modal-description,
+.brutalist-page .checkout-empty,
+.brutalist-page .cart-item-copy p,
+.brutalist-page .checkout-line p,
+.brutalist-page .thank-you-copy p {
+  color: #2a2a2a;
+}
+
+.brutalist-nav {
+  border-radius: 0;
+  border: 3px solid #111111;
+  background: #ffffff;
+  backdrop-filter: none;
+  box-shadow: 8px 8px 0 #111111;
+}
+
+.brutalist-nav a,
+.brutalist-page .site-nav a {
+  color: #111111;
+  font-weight: 700;
+}
+
+.brutalist-nav a:hover,
+.brutalist-nav a:focus-visible,
+.brutalist-page .site-nav a:hover,
+.brutalist-page .site-nav a:focus-visible {
+  color: #111111;
+  transform: none;
+  background: #f8b344;
+}
+
+.brutalist-nav-toggle {
+  border-radius: 0;
+  border: 3px solid #111111;
+  background: #ffffff;
+  color: #111111;
+}
+
+.brutalist-page .cart-badge,
+.brutalist-cart-badge {
+  background: #98c83f;
+  color: #111111;
+  border-radius: 0;
+  min-width: 1.5rem;
+  font-weight: 900;
+}
+
+.brutalist-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 1.25rem;
+  min-height: auto;
+  padding-top: 2rem;
+}
+
+.brutalist-kicker,
+.brutalist-label,
+.brutalist-panel-label {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.45rem 0.65rem;
+  border: 2px solid #111111;
+  background: #98c83f;
+  color: #111111;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.brutalist-page .eyebrow {
+  color: #111111;
+  font-weight: 900;
+}
+
+.brutalist-page .eyebrow::before {
+  background: #111111;
+  border-radius: 0;
+}
+
+.brutalist-hero-copy,
+.brutalist-hero-board,
+.brutalist-summary-card,
+.brutalist-mini-card,
+.brutalist-storefront-panel,
+.brutalist-menu-card,
+.brutalist-panel,
+.brutalist-page .checkout-card,
+.brutalist-page .checkout-form-card,
+.brutalist-page .empty-panel,
+.brutalist-page .cart-item {
+  border: 3px solid #111111;
+  border-radius: 0;
+  background: #ffffff;
+  box-shadow: 10px 10px 0 #111111;
+  backdrop-filter: none;
+}
+
+.brutalist-hero-copy {
+  padding: 1.6rem;
+}
+
+.brutalist-hero-copy h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.brutalist-lead {
+  max-width: 56ch;
+  margin-top: 1.3rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.brutalist-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.4rem;
+}
+
+.brutalist-button-primary,
+.brutalist-button-secondary {
+  border-radius: 0;
+  border: 3px solid #111111;
+  box-shadow: 6px 6px 0 #111111;
+  font-weight: 900;
+}
+
+.brutalist-button-primary {
+  background: #f8b344;
+  color: #111111;
+}
+
+.brutalist-button-secondary {
+  background: #ffffff;
+  color: #111111;
+}
+
+.brutalist-button-primary:hover,
+.brutalist-button-primary:focus-visible,
+.brutalist-button-secondary:hover,
+.brutalist-button-secondary:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #111111;
+}
+
+.brutalist-hero-board {
+  padding: 1.4rem;
+}
+
+.brutalist-board-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #111111;
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brutalist-board-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.brutalist-board-grid article {
+  padding: 1rem;
+  border: 3px solid #111111;
+  background: #f6f2e8;
+}
+
+.brutalist-board-grid strong,
+.brutalist-mini-card strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1rem;
+}
+
+.brutalist-strip {
+  padding-top: 0;
+}
+
+.brutalist-marquee {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 3px solid #111111;
+  background: #111111;
+}
+
+.brutalist-marquee span {
+  display: block;
+  padding: 1rem 1.1rem;
+  border-right: 3px solid #f6f2e8;
+  color: #f6f2e8;
+  font-family: "Archivo Black", sans-serif;
+  text-align: center;
+}
+
+.brutalist-marquee span:last-child {
+  border-right: 0;
+}
+
+.brutalist-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1.25rem;
+}
+
+.brutalist-summary-card,
+.brutalist-mini-card {
+  padding: 1.35rem;
+}
+
+.brutalist-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.brutalist-storefront {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21rem;
+  gap: 1rem;
+  align-items: start;
+  padding-top: 2rem;
+}
+
+.brutalist-storefront-copy h1,
+.brutalist-section-head h2 {
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.brutalist-storefront-panel {
+  padding: 1.25rem;
+}
+
+.brutalist-storefront-stats {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1rem 0 1.2rem;
+}
+
+.brutalist-storefront-stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem;
+  border: 3px solid #111111;
+  background: #f6f2e8;
+}
+
+.brutalist-storefront-stats span {
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.brutalist-storefront-stats strong {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1rem;
+}
+
+.brutalist-menu-section {
+  padding-top: 1rem;
+}
+
+.brutalist-section-head {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.brutalist-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.brutalist-menu-card {
+  min-height: 0;
+  padding: 1rem;
+  text-align: left;
+  color: #111111;
+}
+
+.brutalist-menu-card .menu-card-media {
+  margin: -1rem -1rem 1rem;
+  border-radius: 0;
+  border-bottom: 3px solid #111111;
+  background: #f6f2e8;
+}
+
+.brutalist-menu-media img {
+  height: 12rem;
+}
+
+.brutalist-menu-card .card-tag,
+.brutalist-tag {
+  border-radius: 0;
+  background: #111111;
+  color: #f6f2e8;
+}
+
+.brutalist-menu-card .menu-price,
+.brutalist-page .menu-modal-price,
+.brutalist-page .summary-row strong,
+.brutalist-page .cart-item-price,
+.brutalist-page .reference-row strong,
+.brutalist-page .nutrition-item strong {
+  color: #111111;
+}
+
+.brutalist-menu-card .menu-card-hint {
+  color: #111111;
+  font-weight: 900;
+}
+
+.brutalist-menu-card .menu-card-hint::after {
+  border-radius: 0;
+  background: #111111;
+  color: #f6f2e8;
+}
+
+.brutalist-menu-card:hover,
+.brutalist-menu-card:focus-visible {
+  transform: translate(-4px, -4px);
+  border-color: #111111;
+  background: #f8b344;
+  box-shadow: 14px 14px 0 #111111;
+}
+
+.brutalist-modal-backdrop {
+  background: rgba(17, 17, 17, 0.76);
+  backdrop-filter: none;
+}
+
+.brutalist-modal-dialog {
+  border: 3px solid #111111;
+  border-radius: 0;
+  background: #ffffff;
+  box-shadow: 16px 16px 0 #111111;
+}
+
+.brutalist-close,
+.brutalist-page .menu-slider-button,
+.brutalist-page .quantity-picker button,
+.brutalist-page .link-button,
+.brutalist-page .button,
+.brutalist-page .nav-toggle,
+.brutalist-page .action-button {
+  border-radius: 0;
+}
+
+.brutalist-close,
+.brutalist-page .menu-slider-button,
+.brutalist-page .quantity-picker button {
+  border: 2px solid #111111;
+  background: #ffffff;
+  color: #111111;
+}
+
+.brutalist-page .menu-modal-panel,
+.brutalist-page .nutrition-item,
+.brutalist-page .checkout-card,
+.brutalist-page .checkout-form-card,
+.brutalist-page .empty-panel,
+.brutalist-page .cart-item,
+.brutalist-page .quantity-picker,
+.brutalist-page .payment-chip,
+.brutalist-page .summary-row,
+.brutalist-page .reference-row,
+.brutalist-page .map-frame {
+  border-color: #111111;
+}
+
+.brutalist-page .menu-modal-panel,
+.brutalist-page .nutrition-item,
+.brutalist-page .quantity-picker,
+.brutalist-page .payment-chip,
+.brutalist-page .story-shot,
+.brutalist-page .checkout-status[data-tone="info"] {
+  background: #f6f2e8;
+}
+
+.brutalist-page .form-grid input,
+.brutalist-page .form-grid textarea {
+  border: 3px solid #111111;
+  border-radius: 0;
+  background: #ffffff;
+  color: #111111;
+}
+
+.brutalist-page .form-grid input:focus-visible,
+.brutalist-page .form-grid textarea:focus-visible,
+.brutalist-page .button:focus-visible,
+.brutalist-page .site-nav a:focus-visible,
+.brutalist-page .nav-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(248, 179, 68, 0.5);
+}
+
+.brutalist-page .site-footer {
+  color: #111111;
+  padding-top: 1rem;
+}
+
+.brutalist-footer {
+  border-top: 3px solid #111111;
+}
+
+@media (max-width: 1080px) {
+  .brutalist-hero,
+  .brutalist-summary,
+  .brutalist-storefront {
+    grid-template-columns: 1fr;
+  }
+
+  .brutalist-menu-grid,
+  .brutalist-summary-grid,
+  .brutalist-board-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brutalist-marquee {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .brutalist-nav {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .brutalist-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .brutalist-nav a {
+    padding: 0.95rem 1rem;
+    border-bottom: 2px solid #111111;
+  }
+
+  .brutalist-nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .brutalist-menu-grid,
+  .brutalist-summary-grid,
+  .brutalist-board-grid,
+  .brutalist-marquee {
+    grid-template-columns: 1fr;
   }
 }

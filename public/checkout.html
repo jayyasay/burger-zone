@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | RC Burger Zone</title>
+    <meta name="theme-color" content="#f6f2e8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="brutalist-page brutalist-catalog-page">
+    <a class="skip-link brutalist-skip-link" href="#main-content">Skip to Content</a>
+    <div class="page-shell brutalist-shell">
+
+      <header class="site-header brutalist-header">
+        <a class="brand brutalist-brand" href="index.html" aria-label="RC Burger Zone home">
+          <img
+            class="brand-logo brutalist-brand-logo"
+            src="logo.jpg"
+            alt="RC Burger Zone logo"
+            width="960"
+            height="960"
+          />
+          <span class="brand-copy brutalist-brand-copy">
+            <strong>RC Burger Zone</strong>
+            <em>Checkout / Stripe payment</em>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle brutalist-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav brutalist-nav" id="site-nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Shop Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html" aria-current="page">Checkout</a>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="section inner-hero">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Checkout</p>
+              <h1 class="page-title">Pay with Stripe</h1>
+            </div>
+            <p>Enter the order details, keep the form easy to scan, then continue to Stripe Checkout.</p>
+          </div>
+        </section>
+
+        <section class="section checkout-layout">
+          <form class="checkout-form-card" data-checkout-form>
+            <span class="panel-label">Customer details</span>
+            <div class="form-grid">
+              <label>
+                Full name
+                <input name="customerName" type="text" autocomplete="name" required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autocomplete="email" required />
+              </label>
+              <label>
+                Mobile number
+                <input name="phone" type="tel" autocomplete="tel" required />
+              </label>
+              <label>
+                City
+                <input name="city" type="text" value="Muntinlupa City" autocomplete="address-level2" required />
+              </label>
+              <label class="field-span-2">
+                Address
+                <input name="addressLine1" type="text" autocomplete="address-line1" required />
+              </label>
+              <label>
+                Postal code
+                <input name="postalCode" type="text" value="1773" autocomplete="postal-code" required />
+              </label>
+              <label class="field-span-2">
+                Order notes
+                <textarea name="notes" rows="4" placeholder="Special instructions, landmark, or pickup details…"></textarea>
+              </label>
+            </div>
+
+            <div class="checkout-actions">
+              <button class="button brutalist-button-primary" type="submit">Continue to Stripe Checkout</button>
+              <a class="button brutalist-button-secondary" href="cart.html">Back to Cart</a>
+            </div>
+
+            <p class="checkout-status" data-checkout-status hidden></p>
+          </form>
+
+          <aside class="checkout-sidebar">
+            <div class="checkout-card">
+              <span class="panel-label">Order summary</span>
+              <div class="checkout-summary" data-checkout-summary></div>
+              <div class="summary-row">
+                <span>Total</span>
+                <strong data-checkout-subtotal>₱0.00</strong>
+              </div>
+            </div>
+
+            <div class="checkout-card">
+              <span class="panel-label">Stripe payment</span>
+              <p class="summary-note" data-gcash-hint>
+                This checkout now redirects to Stripe Checkout. The previous Checkout.com / GCash code is still kept in the project for later use.
+              </p>
+              <div class="payment-method-chip-row">
+                <span class="payment-chip">Stripe Checkout</span>
+                <span class="payment-chip">Cards</span>
+                <span class="payment-chip">Dashboard-managed methods</span>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer brutalist-footer">
+        <div class="footer-brand">
+          <img class="footer-logo" src="logo.jpg" alt="RC Burger Zone logo" width="960" height="960" loading="lazy" />
+          <p>RC Burger Zone</p>
+        </div>
+        <p>Stripe is the active checkout path for now. Checkout.com / GCash is preserved for future activation.</p>
+      </footer>
+    </div>
+
+    <script src="app-data.js"></script>
+    <script src="cart-store.js"></script>
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+</html>
