@@ -457,10 +457,35 @@ app.post("/api/create-stripe-checkout-session", async (req, res) => {
   }
 
   try {
+    let stripeCustomerId;
+
+    if (customer.phone || customer.customerName || customer.email) {
+      const stripeCustomer = await stripe.customers.create({
+        name: customer.customerName,
+        email: customer.email,
+        phone: customer.phone || undefined,
+        address: {
+          line1: customer.addressLine1 || undefined,
+          city: customer.city || undefined,
+          postal_code: customer.postalCode || undefined,
+          country: "PH"
+        },
+        metadata: {
+          source: "rc_burger_zone_checkout"
+        }
+      });
+
+      stripeCustomerId = stripeCustomer.id;
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       currency: "php",
-      customer_email: customer.email,
+      customer: stripeCustomerId,
+      customer_email: stripeCustomerId ? undefined : customer.email,
+      phone_number_collection: {
+        enabled: true
+      },
       billing_address_collection: "required",
       line_items: cart.map((item) => ({
         quantity: Number(item.quantity || 1),

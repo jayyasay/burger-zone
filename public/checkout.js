@@ -39,10 +39,14 @@ const renderCheckoutSummary = () => {
 
 const readCheckoutForm = () => {
   const formData = new FormData(checkoutForm);
+  const phoneLocal = String(formData.get("phoneLocal") || "")
+    .replace(/\D/g, "")
+    .slice(0, 9);
+
   return {
     customerName: String(formData.get("customerName") || "").trim(),
     email: String(formData.get("email") || "").trim(),
-    phone: String(formData.get("phone") || "").trim(),
+    phone: phoneLocal ? `09${phoneLocal}` : "",
     addressLine1: String(formData.get("addressLine1") || "").trim(),
     city: String(formData.get("city") || "").trim(),
     postalCode: String(formData.get("postalCode") || "").trim(),
@@ -50,7 +54,7 @@ const readCheckoutForm = () => {
   };
 };
 
-const showStatus = (message, tone = "info") => {
+const showStatus = (message, tone = "warning") => {
   if (!checkoutStatus) {
     return;
   }
@@ -71,12 +75,12 @@ const initStripeCheckout = async () => {
 
   const cart = window.BurgerZoneCart.getCart();
   if (!cart.length) {
-    showStatus("Your cart is empty. Add items before continuing to checkout.", "error");
+    showStatus("Your cart is empty. Add items before continuing to checkout.", "alert");
     return;
   }
 
   const customer = readCheckoutForm();
-  showStatus("Preparing your Stripe Checkout session...", "info");
+  showStatus("Preparing your Stripe Checkout session...", "warning");
 
   const response = await fetch("/api/create-stripe-checkout-session", {
     method: "POST",
@@ -91,12 +95,12 @@ const initStripeCheckout = async () => {
 
   const paymentSession = await response.json();
   if (!response.ok) {
-    showStatus(paymentSession.error || "Could not create a Stripe Checkout session.", "error");
+    showStatus(paymentSession.error || "Could not create a Stripe Checkout session.", "alert");
     return;
   }
 
   if (!paymentSession.url) {
-    showStatus("Stripe did not return a Checkout URL.", "error");
+    showStatus("Stripe did not return a Checkout URL.", "alert");
     return;
   }
 
@@ -115,11 +119,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const status = query.get("status");
 
   if (status === "failed") {
-    showStatus("Payment failed or was cancelled. You can try Stripe Checkout again below.", "error");
+    showStatus("Payment failed or was cancelled. You can try Stripe Checkout again below.", "alert");
   }
 
   if (gcashHint) {
     gcashHint.textContent =
-      "Stripe Checkout is active now. Keep your Stripe publishable and secret keys in .env when you are ready to test. Checkout.com / GCash code remains in the server for future use.";
+      "Stripe checkout is active now. GCash stays listed as coming soon so the payment section is future-ready without changing the current live flow.";
   }
 });

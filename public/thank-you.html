@@ -7,8 +7,9 @@
     <meta name="theme-color" content="#f6f2e8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="site-config.js"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -32,21 +33,7 @@
           </span>
         </a>
 
-        <button
-          class="nav-toggle brutalist-nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-        >
-          Menu
-        </button>
-
-        <nav class="site-nav brutalist-nav" id="site-nav">
-          <a href="index.html">Home</a>
-          <a href="menu.html">Shop Menu</a>
-          <a href="cart.html">Cart</a>
-          <a href="checkout.html">Checkout</a>
-        </nav>
+        <div data-site-nav data-page="thank-you"></div>
       </header>
 
       <main id="main-content">
@@ -63,7 +50,7 @@
         <section class="section checkout-layout">
           <div class="checkout-form-card thank-you-card">
             <span class="panel-label">Payment status</span>
-            <p class="checkout-status" data-thank-you-status data-tone="info">Loading your order details...</p>
+            <p class="checkout-status" data-thank-you-status data-tone="warning">Loading your order details...</p>
             <div class="thank-you-copy">
               <h2>What happens next</h2>
               <p>The restaurant should receive an order email, and the customer email will contain the order summary and reference details.</p>
@@ -110,6 +97,7 @@
       </footer>
     </div>
 
+    <script src="site-nav.js"></script>
     <script src="app-data.js"></script>
     <script src="cart-store.js"></script>
     <script src="script.js"></script>

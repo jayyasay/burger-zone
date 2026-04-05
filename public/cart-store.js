@@ -1,6 +1,7 @@
 (function () {
   const STORAGE_KEY = "burger-zone-cart-v1";
   const menuData = window.BURGER_ZONE_MENU?.items || {};
+  let lastCartCount = 0;
 
   const readCart = () => {
     try {
@@ -34,6 +35,11 @@
   const getCartCount = () => getCart().reduce((sum, item) => sum + item.quantity, 0);
 
   const getCartSubtotal = () => getCart().reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const getItemQuantity = (itemId) => {
+    const entry = readCart().find((item) => item.id === itemId);
+    return entry ? entry.quantity : 0;
+  };
 
   const addToCart = (itemId, quantity = 1) => {
     if (!menuData[itemId]) {
@@ -83,6 +89,27 @@
       badge.textContent = String(count);
       badge.hidden = count === 0;
     });
+
+    document.querySelectorAll("[data-cart-fab]").forEach((fab) => {
+      fab.hidden = count === 0;
+
+      if (lastCartCount === 0 && count > 0) {
+        fab.classList.remove("is-shimmering");
+        // Restart the animation each time the cart appears from zero.
+        void fab.offsetWidth;
+        fab.classList.add("is-shimmering");
+
+        window.setTimeout(() => {
+          fab.classList.remove("is-shimmering");
+        }, 1200);
+      }
+    });
+
+    document.querySelectorAll("[data-cart-fab-label]").forEach((label) => {
+      label.textContent = count === 1 ? "1 item ready" : `${count} items ready`;
+    });
+
+    lastCartCount = count;
   };
 
   window.BurgerZoneCart = {
@@ -91,6 +118,7 @@
     formatCurrency,
     getCart,
     getCartCount,
+    getItemQuantity,
     getCartSubtotal,
     removeFromCart,
     syncCartBadges,

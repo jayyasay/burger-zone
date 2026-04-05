@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   if (!sessionId) {
     thankYouStatus.textContent = "Missing Stripe session ID. We could not load your order details.";
-    thankYouStatus.dataset.tone = "error";
+    thankYouStatus.dataset.tone = "alert";
     return;
   }
 
@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if (!response.ok) {
       thankYouStatus.textContent = payload.error || "Could not load your order status.";
-      thankYouStatus.dataset.tone = "error";
+      thankYouStatus.dataset.tone = "alert";
       return;
     }
 
@@ -66,10 +66,10 @@ window.addEventListener("DOMContentLoaded", async () => {
         ? "Payment confirmed and emails sent to both the restaurant and the customer."
         : "Payment confirmed. Email delivery is still pending or needs SMTP configuration.";
     thankYouStatus.dataset.tone =
-      payload.order?.email_status === "sent" ? "success" : "info";
+      payload.order?.email_status === "sent" ? "success" : "warning";
   } catch (error) {
     thankYouStatus.textContent =
       error.message || "Unexpected error while loading the thank-you page.";
-    thankYouStatus.dataset.tone = "error";
+    thankYouStatus.dataset.tone = "alert";
   }
 });

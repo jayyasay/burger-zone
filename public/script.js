@@ -1,8 +1,4 @@
-const navToggle = document.querySelector(".nav-toggle");
-const siteNav = document.querySelector(".site-nav");
-const navLinks = document.querySelectorAll(".site-nav a");
 const revealItems = document.querySelectorAll(".reveal");
-const menuTriggers = document.querySelectorAll(".menu-trigger");
 const menuModal = document.querySelector("#menu-modal");
 const modalCloseButtons = document.querySelectorAll("[data-close-modal]");
 const modalCategory = document.querySelector("#menu-modal-category");
@@ -21,6 +17,12 @@ const modalPrevButton = document.querySelector("#menu-slider-prev");
 const modalNextButton = document.querySelector("#menu-slider-next");
 const modalDialog = document.querySelector(".menu-modal-dialog");
 const modalAddToCartButton = document.querySelector("#menu-modal-add-to-cart");
+const modalCartQuantity = document.querySelector("#menu-modal-cart-qty");
+const modalQuantityControls = document.querySelector("#menu-modal-quantity-controls");
+const modalQuantityButtons = document.querySelectorAll("[data-modal-qty-action]");
+const itemQuantityBadges = document.querySelectorAll("[data-item-quantity]");
+const itemAddButtons = document.querySelectorAll("[data-cart-add]");
+const itemQuantityControls = document.querySelectorAll("[data-cart-controls]");
 
 const menuItems = window.BURGER_ZONE_MENU?.items || {};
 
@@ -29,21 +31,140 @@ let activeSlides = [];
 let activeSlideIndex = 0;
 let activeItemId = "";
 
-if (navToggle && siteNav) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = siteNav.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-    document.body.classList.toggle("nav-open", isOpen);
+const hydrateFeaturedProduct = () => {
+  const featuredCard = document.querySelector("[data-featured-item]");
+  if (!featuredCard) {
+    return;
+  }
+
+  const item = menuItems[featuredCard.dataset.featuredItem];
+  if (!item) {
+    return;
+  }
+
+  const featuredImage = featuredCard.querySelector("[data-featured-image]");
+  const featuredStamp = featuredCard.querySelector("[data-featured-stamp]");
+  const featuredCategory = featuredCard.querySelector("[data-featured-category]");
+  const featuredTitle = featuredCard.querySelector("[data-featured-title]");
+  const featuredDescription = featuredCard.querySelector("[data-featured-description]");
+  const featuredPrice = featuredCard.querySelector("[data-featured-price]");
+  const featuredMeta = featuredCard.querySelector("[data-featured-meta]");
+  const featuredCalories = featuredCard.querySelector("[data-featured-calories]");
+  const featuredProtein = featuredCard.querySelector("[data-featured-protein]");
+
+  if (featuredImage) {
+    featuredImage.src = item.cardImage.src;
+    featuredImage.alt = item.cardImage.alt;
+  }
+
+  if (featuredStamp) {
+    featuredStamp.textContent = item.category;
+  }
+
+  if (featuredCategory) {
+    featuredCategory.textContent = `${item.category} / Ready To Add`;
+  }
+
+  if (featuredTitle) {
+    featuredTitle.textContent = item.title;
+  }
+
+  if (featuredDescription) {
+    featuredDescription.textContent = item.description;
+  }
+
+  if (featuredPrice) {
+    featuredPrice.textContent = item.displayPrice;
+  }
+
+  if (featuredMeta) {
+    featuredMeta.textContent = item.images?.[0]?.caption || item.category;
+  }
+
+  if (featuredCalories) {
+    featuredCalories.textContent = item.nutrition.calories;
+  }
+
+  if (featuredProtein) {
+    featuredProtein.textContent = item.nutrition.protein;
+  }
+};
+
+const hydrateMenuCards = () => {
+  document.querySelectorAll("[data-item-card]").forEach((card) => {
+    const item = menuItems[card.dataset.itemCard];
+    if (!item) {
+      return;
+    }
+
+    const itemImage = card.querySelector("[data-item-image]");
+    const itemCategory = card.querySelector("[data-item-category]");
+    const itemTitle = card.querySelector("[data-item-title]");
+    const itemDescription = card.querySelector("[data-item-description]");
+    const itemPrice = card.querySelector("[data-item-price]");
+
+    if (itemImage) {
+      itemImage.src = item.cardImage.src;
+      itemImage.alt = item.cardImage.alt;
+    }
+
+    if (itemCategory) {
+      itemCategory.textContent = item.category;
+    }
+
+    if (itemTitle) {
+      itemTitle.textContent = item.title;
+    }
+
+    if (itemDescription) {
+      itemDescription.textContent = item.description;
+    }
+
+    if (itemPrice) {
+      itemPrice.textContent = item.displayPrice;
+    }
+  });
+};
+
+const getItemQuantity = (itemId) => window.BurgerZoneCart?.getItemQuantity(itemId) || 0;
+
+const syncItemQuantities = () => {
+  document.querySelectorAll("[data-item-quantity]").forEach((badge) => {
+    badge.textContent = String(getItemQuantity(badge.dataset.itemQuantity));
   });
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("nav-open");
-    });
+  document.querySelectorAll("[data-cart-add]").forEach((button) => {
+    const quantity = getItemQuantity(button.dataset.cartAdd);
+    button.hidden = quantity > 0;
   });
-}
+
+  document.querySelectorAll("[data-cart-controls]").forEach((control) => {
+    const quantity = getItemQuantity(control.dataset.cartControls);
+    control.hidden = quantity === 0;
+  });
+
+  if (modalCartQuantity) {
+    const quantity = activeItemId ? getItemQuantity(activeItemId) : 0;
+    modalCartQuantity.textContent = String(quantity);
+
+    if (modalAddToCartButton) {
+      modalAddToCartButton.hidden = quantity > 0;
+    }
+
+    if (modalQuantityControls) {
+      modalQuantityControls.hidden = quantity === 0;
+    }
+  }
+};
+
+const adjustItemQuantity = (itemId, delta) => {
+  if (!itemId || !window.BurgerZoneCart) {
+    return;
+  }
+
+  const nextQuantity = Math.max(0, getItemQuantity(itemId) + delta);
+  window.BurgerZoneCart.updateQuantity(itemId, nextQuantity);
+};
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -104,9 +225,7 @@ const openMenuModal = (itemId, trigger) => {
   if (modalDialog) {
     modalDialog.scrollTop = 0;
   }
-  if (modalAddToCartButton) {
-    modalAddToCartButton.textContent = "Add to Cart";
-  }
+  syncItemQuantities();
   document.querySelector(".menu-modal-close")?.focus();
 };
 
@@ -119,12 +238,6 @@ const closeMenuModal = () => {
   document.body.classList.remove("modal-open");
   activeTrigger?.focus();
 };
-
-menuTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", () => {
-    openMenuModal(trigger.dataset.item, trigger);
-  });
-});
 
 modalPrevButton?.addEventListener("click", () => {
   activeSlideIndex = (activeSlideIndex - 1 + activeSlides.length) % activeSlides.length;
@@ -146,10 +259,47 @@ modalAddToCartButton?.addEventListener("click", () => {
   }
 
   window.BurgerZoneCart.addToCart(activeItemId, 1);
-  modalAddToCartButton.textContent = "Added to Cart";
-  window.setTimeout(() => {
-    modalAddToCartButton.textContent = "Add to Cart";
-  }, 1200);
+  syncItemQuantities();
+});
+
+modalQuantityButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!activeItemId) {
+      return;
+    }
+
+    adjustItemQuantity(activeItemId, button.dataset.modalQtyAction === "increase" ? 1 : -1);
+    syncItemQuantities();
+  });
+});
+
+document.addEventListener("click", (event) => {
+  const openButton = event.target.closest("[data-open-item]");
+  if (openButton) {
+    openMenuModal(openButton.dataset.openItem, openButton);
+    return;
+  }
+
+  const addButton = event.target.closest("[data-add-to-cart]");
+  if (addButton) {
+    const itemId = addButton.dataset.id;
+    if (!itemId || !window.BurgerZoneCart) {
+      return;
+    }
+
+    window.BurgerZoneCart.addToCart(itemId, 1);
+    syncItemQuantities();
+    return;
+  }
+
+  const quantityButton = event.target.closest("[data-menu-qty-action]");
+  if (quantityButton) {
+    adjustItemQuantity(
+      quantityButton.dataset.id,
+      quantityButton.dataset.menuQtyAction === "increase" ? 1 : -1
+    );
+    syncItemQuantities();
+  }
 });
 
 document.addEventListener("keydown", (event) => {
@@ -157,3 +307,8 @@ document.addEventListener("keydown", (event) => {
     closeMenuModal();
   }
 });
+
+hydrateFeaturedProduct();
+hydrateMenuCards();
+window.addEventListener("DOMContentLoaded", syncItemQuantities);
+window.addEventListener("cart:updated", syncItemQuantities);

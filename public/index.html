@@ -11,8 +11,9 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="site-config.js"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -36,36 +37,22 @@
           </span>
         </a>
 
-        <button
-          class="nav-toggle brutalist-nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-        >
-          Menu
-        </button>
-
-        <nav class="site-nav brutalist-nav" id="site-nav">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="menu.html">Shop Menu</a>
-          <a href="cart.html">Cart</a>
-          <a href="checkout.html">Checkout</a>
-        </nav>
+        <div data-site-nav data-page="home"></div>
       </header>
 
       <main id="main-content">
         <section class="section brutalist-hero reveal">
-          <div class="brutalist-hero-copy">
-            <p class="brutalist-kicker">Neighborhood Burgers. Big Cravings. Fast Checkout.</p>
-            <h1>HOT OFF THE GRIDDLE. READY WHEN YOU ARE.</h1>
+          <div class="brutalist-hero-copy brutalist-hero-copy-wide">
+            <p class="brutalist-kicker">Big burger cravings? You are in the right place.</p>
+            <h1>GOOD BURGERS. LOADED SIDES. NO NEED TO OVERTHINK IT.</h1>
             <p class="brutalist-lead">
-              RC Burger Zone makes it easy to go from craving to checkout with juicy burgers, loaded
-              fries, barkada-ready bundles, and cold drinks that hit the spot. Skip the guesswork,
-              head straight to the menu, and build your order in a few taps.
+              RC Burger Zone is for those days when you just want something good, filling, and easy
+              to order. Pick your burger, add fries and a drink, then check out fast without all the
+              extra stuff getting in the way.
             </p>
 
             <div class="brutalist-cta-row">
-              <a class="button brutalist-button-primary" href="menu.html">Order From The Menu</a>
+              <a class="button brutalist-button-primary" href="menu.html">See The Full Menu</a>
               <a class="button brutalist-button-secondary" href="cart.html">
                 View Cart
                 <span class="cart-badge brutalist-cart-badge" data-cart-count hidden>0</span>
@@ -73,30 +60,55 @@
             </div>
           </div>
 
-          <div class="brutalist-hero-board">
-            <div class="brutalist-board-top">
-              <span>RC Burger Zone</span>
-              <span>Brutalist Storefront</span>
+          <article class="brutalist-featured-product" data-featured-item="zone-classic-stack">
+            <div class="brutalist-feature-media">
+              <img
+                data-featured-image
+                src="assets/placeholders/menu-card-placeholder.svg"
+                alt="Featured Zone Classic Stack burger"
+                width="1600"
+                height="1000"
+                fetchpriority="high"
+              />
+              <span class="brutalist-feature-stamp" data-featured-stamp>Crowd Favorite</span>
             </div>
-            <div class="brutalist-board-grid">
-              <article>
-                <strong>SIGNATURE BURGERS</strong>
-                <p>Classic stacks, double cheese builds, and easy combos made for everyday cravings.</p>
-              </article>
-              <article>
-                <strong>LOADED SIDES</strong>
-                <p>Cheese fries and dips built to turn a quick burger run into a full meal.</p>
-              </article>
-              <article>
-                <strong>GROUP ORDERS</strong>
-                <p>Barkada trays make movie nights, merienda breaks, and office snack runs easier.</p>
-              </article>
-              <article>
-                <strong>COLD DRINKS</strong>
-                <p>Iced tea and lemon cooler keep every rich, cheesy bite balanced and refreshing.</p>
-              </article>
+            <div class="brutalist-feature-copy">
+              <p class="brutalist-label" data-featured-category>Best Seller / Ready To Add</p>
+              <h2 data-featured-title>Zone Classic Stack</h2>
+              <p data-featured-description>
+                A juicy single-patty burger with melted cheese, crisp greens, and our house sauce.
+                If you are not sure what to get first, this is the safe choice that still hits every time.
+              </p>
+              <div class="brutalist-feature-meta">
+                <strong data-featured-price>₱89</strong>
+                <span data-featured-meta>Easy favorite for first-timers and regulars</span>
+              </div>
+              <div class="brutalist-feature-actions">
+                <button class="button brutalist-button-primary" type="button" data-add-to-cart data-id="zone-classic-stack" data-cart-add="zone-classic-stack">
+                  Add to Cart
+                </button>
+                <div class="quantity-picker brutalist-inline-quantity" aria-label="Quantity for Zone Classic Stack" data-cart-controls="zone-classic-stack" hidden>
+                  <button type="button" data-menu-qty-action="decrease" data-id="zone-classic-stack" aria-label="Decrease Zone Classic Stack quantity">-</button>
+                  <span data-item-quantity="zone-classic-stack" aria-live="polite">0</span>
+                  <button type="button" data-menu-qty-action="increase" data-id="zone-classic-stack" aria-label="Increase Zone Classic Stack quantity">+</button>
+                </div>
+              </div>
+              <div class="brutalist-feature-notes">
+                <div>
+                  <span>Calories</span>
+                  <strong data-featured-calories>430 kcal</strong>
+                </div>
+                <div>
+                  <span>Protein</span>
+                  <strong data-featured-protein>22 g</strong>
+                </div>
+                <div>
+                  <span>Pickup</span>
+                  <strong>Muntinlupa</strong>
+                </div>
+              </div>
             </div>
-          </div>
+          </article>
         </section>
 
         <section class="section brutalist-strip">
@@ -104,50 +116,108 @@
             <span>OPEN DAILY 10 AM - 9 PM</span>
             <span>BURGERS FROM ₱89</span>
             <span>COMBOS FOR SOLO OR BARKADA</span>
-            <span>FAST ONLINE ORDERING</span>
+            <span>ORDER FAST, EAT HAPPY</span>
+          </div>
+        </section>
+
+        <section class="section brutalist-trust">
+          <div class="brutalist-section-head">
+            <p class="brutalist-label">More than just the food</p>
+            <h2>IT FEELS LIKE A PLACE YOU WOULD ACTUALLY WANT TO GO BACK TO.</h2>
+            <p class="menu-helper">
+              Good burger spots are not just about the menu. It is also the vibe, the people you are
+              with, and that easy feeling when the food gets to the table and everyone digs in.
+            </p>
+          </div>
+
+          <div class="brutalist-trust-layout">
+            <article class="brutalist-trust-copy">
+              <p class="brutalist-panel-label">Neighborhood Energy</p>
+              <h3>Perfect for barkada catch-ups, quick merienda stops, and those random burger cravings.</h3>
+              <p>
+                RC Burger Zone should feel easy, familiar, and sulit. It is the kind of spot where
+                you can pull up for a quick bite, bring friends for something shareable, or order your
+                usual when you do not want to think too hard.
+              </p>
+              <div class="brutalist-trust-points">
+                <div>
+                  <strong>FAST ORDERS</strong>
+                  <p>No long steps, no confusing flow. Just pick what you want and add it right away.</p>
+                </div>
+                <div>
+                  <strong>GROUP-FRIENDLY</strong>
+                  <p>From solo meals to barkada orders, there is something here that works for the whole crew.</p>
+                </div>
+              </div>
+            </article>
+
+            <div class="story-gallery brutalist-trust-gallery">
+              <figure class="story-shot brutalist-story-shot story-shot-large">
+                <img src="assets/placeholders/vibe-dining-1.svg" alt="Customers dining inside RC Burger Zone" width="1600" height="1000" loading="lazy" />
+                <figcaption>Burgers, fries, and a chill dine-in moment that feels easy and familiar.</figcaption>
+              </figure>
+              <figure class="story-shot brutalist-story-shot">
+                <img src="assets/placeholders/vibe-dining-2.svg" alt="Friends sharing a meal at RC Burger Zone" width="1600" height="1000" loading="lazy" />
+                <figcaption>One of those easy barkada meals where everyone grabs a little extra.</figcaption>
+              </figure>
+              <figure class="story-shot brutalist-story-shot">
+                <img src="assets/placeholders/vibe-dining-3.svg" alt="Casual customer meal inside RC Burger Zone" width="1600" height="1000" loading="lazy" />
+                <figcaption>Quick comfort food, good company, and no need to make it complicated.</figcaption>
+              </figure>
+            </div>
           </div>
         </section>
 
         <section class="section brutalist-summary">
           <div class="brutalist-summary-card">
-            <p class="brutalist-label">Why people come back</p>
-            <h2>Simple menu. Bold flavor. No slow decision-making.</h2>
+            <p class="brutalist-label">Why people keep coming back</p>
+            <h2>IT IS SIMPLE, SATISFYING, AND EASY TO WANT AGAIN.</h2>
             <p>
-              When hunger hits, you want the good stuff fast. RC Burger Zone keeps the experience
-              clear and direct so you can spot your go-to burger, add the right side, and check out
-              without digging through clutter.
+              Some days you want to try everything. Some days you already know your order before you
+              even open the menu. RC Burger Zone works for both, with burgers, sides, and combos that
+              are easy to pick and even easier to crave again.
             </p>
           </div>
           <div class="brutalist-summary-grid">
             <div class="brutalist-mini-card">
               <strong>MADE FOR CRAVINGS</strong>
-              <p>Every burger is built for that first messy, satisfying bite.</p>
+              <p>Every burger is made for that first bite that makes you want another one right away.</p>
             </div>
             <div class="brutalist-mini-card">
               <strong>EASY TO ORDER</strong>
-              <p>Pick your meal, review your cart, and move straight to checkout.</p>
+              <p>Choose your favorites, check your cart, and get to checkout without the hassle.</p>
             </div>
             <div class="brutalist-mini-card">
               <strong>SHAREABLE PICKS</strong>
-              <p>From solo combos to Barkada Box trays, there is a setup for every appetite.</p>
+              <p>From solo meals to Barkada Box orders, it is easy to find something for the whole table.</p>
             </div>
             <div class="brutalist-mini-card">
               <strong>ALWAYS A GOOD MATCH</strong>
-              <p>Loaded fries, cheese dips, and cold drinks round out the order without overthinking it.</p>
+              <p>Fries, dips, and cold drinks make the meal feel complete without making the choice harder.</p>
             </div>
           </div>
         </section>
       </main>
+
+      <a class="mobile-cart-fab" href="cart.html" data-cart-fab hidden>
+        <span class="mobile-cart-fab-copy">
+          <strong>Go To Cart</strong>
+          <span data-cart-fab-label>1 item ready</span>
+        </span>
+        <span class="mobile-cart-fab-count" data-cart-count hidden>0</span>
+      </a>
 
       <footer class="site-footer brutalist-footer">
         <div class="footer-brand">
           <img class="footer-logo" src="logo.jpg" alt="RC Burger Zone logo" width="960" height="960" loading="lazy" />
           <p>RC Burger Zone</p>
         </div>
-        <p>Burgers, sides, and combos ready for your next quick craving run.</p>
+        <p>Your next burger craving already has a place to go.</p>
       </footer>
     </div>
 
+    <script src="site-nav.js"></script>
+    <script src="app-data.js"></script>
     <script src="cart-store.js"></script>
     <script src="script.js"></script>
   </body>

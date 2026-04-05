@@ -7,8 +7,9 @@
     <meta name="theme-color" content="#f6f2e8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="site-config.js"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -32,21 +33,7 @@
           </span>
         </a>
 
-        <button
-          class="nav-toggle brutalist-nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-        >
-          Menu
-        </button>
-
-        <nav class="site-nav brutalist-nav" id="site-nav">
-          <a href="index.html">Home</a>
-          <a href="menu.html">Shop Menu</a>
-          <a href="cart.html" aria-current="page">Cart</a>
-          <a href="checkout.html">Checkout</a>
-        </nav>
+        <div data-site-nav data-page="cart"></div>
       </header>
 
       <main id="main-content">
@@ -56,7 +43,6 @@
               <p class="eyebrow">Your order</p>
               <h1 class="page-title">Cart Review</h1>
             </div>
-            <p>Adjust the basket here before moving into the clean Stripe checkout flow.</p>
           </div>
         </section>
 
@@ -74,15 +60,20 @@
           </div>
 
           <aside class="cart-sidebar">
-            <div class="checkout-card">
+            <div class="checkout-card cart-summary-card">
               <span class="panel-label">Order summary</span>
               <div class="summary-row">
                 <span>Subtotal</span>
                 <strong data-cart-subtotal>₱0.00</strong>
               </div>
-              <p class="summary-note">This page stays intentionally plain so the user can focus on quantities, totals, and the next action.</p>
-              <a class="button brutalist-button-primary full" data-cart-checkout href="#">Proceed to Checkout</a>
-              <button class="button brutalist-button-secondary full" type="button" data-clear-cart>Clear Cart</button>
+              <p class="summary-note">
+                Double-check the basket here, then continue to checkout when the order looks right.
+                If you want to start over, clear the cart in one tap.
+              </p>
+              <div class="cart-summary-actions">
+                <a class="button brutalist-button-primary full" data-cart-checkout href="#">Proceed to Checkout</a>
+                <button class="button brutalist-button-secondary full" type="button" data-clear-cart>Clear Cart</button>
+              </div>
             </div>
           </aside>
         </section>
@@ -97,6 +88,7 @@
       </footer>
     </div>
 
+    <script src="site-nav.js"></script>
     <script src="app-data.js"></script>
     <script src="cart-store.js"></script>
     <script src="script.js"></script>

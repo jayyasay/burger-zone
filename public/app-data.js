@@ -11,12 +11,12 @@ window.BURGER_ZONE_MENU = {
       description:
         "A Burger Zone staple with a juicy single patty, melty cheese, crisp greens, and creamy house sauce in one reliable, craveable stack.",
       cardImage: {
-        src: "assets/placeholders/menu-card-placeholder.svg",
+        src: "https://scontent.fdxb3-3.fna.fbcdn.net/v/t39.30808-6/487125053_672945805260232_2508619508079391436_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=C9BqXbqXo48Q7kNvwEaPEqA&_nc_oc=AdoJ-yhFJTfIWpAmH7VXESZb3f0ONCtlEU8jKeZwxo_irDd6Mv1Ue64h5BbYOsEXy8iH9F_eU90EPLjSagmirfGN&_nc_zt=23&_nc_ht=scontent.fdxb3-3.fna&_nc_gid=k7FJHIgGIn-90NqH_gC2ww&_nc_ss=7a3a8&oh=00_Af1i90ut14zeTj7hYITtnznPC2H5rZTwh5qa-1Cg4rVpGw&oe=69D2E358",
         alt: "Zone Classic Stack burger"
       },
       images: [
         {
-          src: "assets/placeholders/menu-slide-1.svg",
+          src: "https://scontent.fdxb3-3.fna.fbcdn.net/v/t39.30808-6/487125053_672945805260232_2508619508079391436_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=C9BqXbqXo48Q7kNvwEaPEqA&_nc_oc=AdoJ-yhFJTfIWpAmH7VXESZb3f0ONCtlEU8jKeZwxo_irDd6Mv1Ue64h5BbYOsEXy8iH9F_eU90EPLjSagmirfGN&_nc_zt=23&_nc_ht=scontent.fdxb3-3.fna&_nc_gid=k7FJHIgGIn-90NqH_gC2ww&_nc_ss=7a3a8&oh=00_Af1i90ut14zeTj7hYITtnznPC2H5rZTwh5qa-1Cg4rVpGw&oe=69D2E358",
           alt: "Zone Classic Stack hero burger image",
           caption: "See the classic stack served hot and ready for the first bite."
         },
@@ -55,7 +55,7 @@ window.BURGER_ZONE_MENU = {
       description:
         "Two savory patties, double cheese, and a richer finish for anyone chasing the biggest burger hit on the menu.",
       cardImage: {
-        src: "assets/placeholders/menu-card-placeholder.svg",
+        src: "https://scontent.fdxb3-3.fna.fbcdn.net/v/t39.30808-6/487129260_672945668593579_5750944280024147997_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=sjtpBYLixkoQ7kNvwE2PL7F&_nc_oc=AdpybzYxy3-ZCVFT02DD78RbM2ymgeiIZGbccF5lgtQcKyrgc1YJx4JhvS1Qz3mvGqPese6Z18p3b9jOvkpmw7zi&_nc_zt=23&_nc_ht=scontent.fdxb3-3.fna&_nc_gid=N7IVLGMFGQEh4fZrcM11Cw&_nc_ss=7a3a8&oh=00_Af0_b1w-i2fun77Uj1LiiFUuDaG8OFY9LJqvNNDgWJfHGg&oe=69D2D299",
         alt: "Double Cheese Zone burger"
       },
       images: [
